@@ -66,11 +66,14 @@ class Section extends React.Component<SectionAbstractProps, SectionAbstractState
             const message = result.value.split('<div id="x_appendonsend"></div>')[0];
             const subject = Office.context.mailbox.item.subject;
 
+            const conversationId = Office.context.mailbox.item.conversationId;
+
             const requestJson = Object.assign(
                 {
                     partner_id: this.props.partner.id,
                     email_body: message,
                     email_subject: subject,
+                    outlook_conversation_id: conversationId,
                 },
                 additionnalValues || {},
             );
